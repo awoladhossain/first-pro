@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { Model } from 'mongoose';
 
 export type TGuardian = {
@@ -23,10 +24,11 @@ export type TLocalGuardian = {
 
 export type TStudent = {
   id: string;
+  user: Types.ObjectId;
   password: string;
   name: TUserName;
   gender: 'male' | 'female' | 'other';
-  dateOfBirth: string;
+  dateOfBirth: Date;
   email: string;
   contactNumber: string;
   emergenceyNumber: string;
@@ -36,8 +38,9 @@ export type TStudent = {
   guardian: TGuardian;
   localGuardian: TLocalGuardian;
   profileImg?: string;
-  isActive: 'active' | 'blocked';
+  admissionSemester: Types.ObjectId;
   isDeleted: boolean;
+  academicDepartment: Types.ObjectId;
 };
 
 // *** for creating static instance
